@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
     cors({
-        origin: 'https://study-notion-dupl-eight.vercel.app',
+        origin: 'https://studynotiondupl-1.onrender.com',
         credentials: true,
     })
 )
