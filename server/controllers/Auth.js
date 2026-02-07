@@ -28,14 +28,14 @@ exports.sendOTP = async (req,res) =>{
         console.log("OTP generated : ",otp);
 
         let result = await OTP.findOne({otp:otp});
-        while(result){
-            otp = otpGenerator.generate(6,{
-                upperCaseAlphabets:false,
-                lowerCaseAlphabets:false,
-                specialChars:false,
-            });
-            // result = await OTP.findOne({otp:otp});
-        }
+        do {
+      otp = otpGenerator.generate(6, {
+        upperCaseAlphabets: false,
+        lowerCaseAlphabets: false,
+        specialChars: false,
+      });
+      result = await OTP.findOne({ otp });
+    } while (result);
 
         const otpPayload = {email,otp};
         
