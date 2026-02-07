@@ -34,7 +34,7 @@ exports.sendOTP = async (req,res) =>{
                 lowerCaseAlphabets:false,
                 specialChars:false,
             });
-            result = await OTP.findOne({otp:otp});
+            // result = await OTP.findOne({otp:otp});
         }
 
         const otpPayload = {email,otp};
