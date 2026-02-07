@@ -18,20 +18,20 @@ const OTPSchema = mongoose.Schema({
     },
 });
 
-async function sendVerificationEmail(email,otp){
-    try{
-        const mailResponse = await mailSender(email,"Verification email from StudyNotation",otpTemplate(otp));
-        console.log("email sent successfully",mailResponse);
-    }
-    catch(error){
-        console.log("error occured while sending email",error);
-        throw error;
-    }
-}
+// async function sendVerificationEmail(email,otp){
+//     try{
+//         const mailResponse = await mailSender(email,"Verification email from StudyNotation",otpTemplate(otp));
+//         console.log("email sent successfully",mailResponse);
+//     }
+//     catch(error){
+//         console.log("error occured while sending email",error);
+//         throw error;
+//     }
+// }
 
-OTPSchema.pre("save", async function(next){
-    await sendVerificationEmail(this.email,this.otp);
-    next();
-})
+// OTPSchema.pre("save", async function(next){
+//     await sendVerificationEmail(this.email,this.otp);
+//     next();
+// })
 
 module.exports = mongoose.model("OTP",OTPSchema);
