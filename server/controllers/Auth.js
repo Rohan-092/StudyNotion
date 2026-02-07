@@ -43,6 +43,12 @@ exports.sendOTP = async (req,res) =>{
         const otpbody = await OTP.create(otpPayload);
         console.log(otpbody);
 
+        await mailSender(
+      email,
+      "Verification Email from StudyNotion",
+      otpTemplate(otp)
+    );
+
         return res.status(200).json({
             success:true,
             message:"otp send successfully",
