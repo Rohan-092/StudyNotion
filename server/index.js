@@ -15,7 +15,7 @@ const cors = require('cors'); //backened entertain the front request
 require("dotenv").config();
 
 
-database.connect();
+// database.connect();
 
 
 app.use(express.json());
@@ -51,8 +51,14 @@ app.get("/",(req,res)=>{
     });
 });
 
+database.connect().then(()=>{
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+        console.log(`App is running at ${PORT}`);
+    })
+});
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`App is running at ${PORT}`);
-})
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () => {
+//     console.log(`App is running at ${PORT}`);
+// })
