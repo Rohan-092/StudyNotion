@@ -12,6 +12,7 @@ const otpTemplate = require('../mail/template/emailVerificationTemplate');
 exports.sendOTP = async (req,res) =>{
     try{
         const {email} = req.body;
+        console.log("1afterrmail")
         const userExist = await User.findOne({email});
         if(userExist){
             console.log("hello");
@@ -20,15 +21,16 @@ exports.sendOTP = async (req,res) =>{
                 message:"user already registered"
             })
         }
-        
+        console.log("2afterrmail")
         var otp = otpGenerator.generate(6,{
             upperCaseAlphabets:false,
             lowerCaseAlphabets:false,
             specialChars:false,
         });
         console.log("OTP generated : ",otp);
-
+    console.log("3afterrmail")
         let result = await OTP.findOne({otp:otp});
+        console.log("4afterrmail")
         do {
       otp = otpGenerator.generate(6, {
         upperCaseAlphabets: false,
@@ -37,10 +39,11 @@ exports.sendOTP = async (req,res) =>{
       });
       result = await OTP.findOne({ otp });
     } while (result);
-
+console.log("5afterrmail")
         const otpPayload = {email,otp};
         
         // create an entry in db
+        console.log("6afterrmail")
         const otpbody = await OTP.create(otpPayload);
         console.log(otpbody);
     console.log("beforemail")
