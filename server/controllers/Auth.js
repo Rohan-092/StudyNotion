@@ -29,7 +29,7 @@ exports.sendOTP = async (req,res) =>{
 
         let result = await OTP.findOne({otp:otp});
         while(result){
-            otp = otpGenerator(6,{
+            otp = otpGenerator.generate(6,{
                 upperCaseAlphabets:false,
                 lowerCaseAlphabets:false,
                 specialChars:false,
@@ -46,7 +46,6 @@ exports.sendOTP = async (req,res) =>{
         return res.status(200).json({
             success:true,
             message:"otp send successfully",
-            otp:otp
         });
     }
     catch(error){
