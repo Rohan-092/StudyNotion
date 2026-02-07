@@ -15,6 +15,7 @@ export function sendOtp(email, navigate) {
     dispatch(setLoading(true))
     let response;
     try {
+        console.log("sssssss")
         response = await apiConnector("POST", SENDOTP_API, {email})
         console.log("SENDOTP API RESPONSE: ", response)
       
