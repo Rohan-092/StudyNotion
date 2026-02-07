@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
     cors({
-        origin: 'http://localhost:3000',
+        origin: 'http://study-notion-dupl-kanwl110z-rohan-092s-projects.vercel.app',
         credentials: true,
     })
 )
