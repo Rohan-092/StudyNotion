@@ -2,7 +2,15 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const mailSender = async (email, title, body) => {
+  console.log("MAIL FUNCTION STARTED");
+
   try {
+    console.log("MAIL CONFIG:", {
+      host: process.env.MAIL_HOST,
+      user: process.env.MAIL_USER ? "✔ exists" : "❌ missing",
+      pass: process.env.MAIL_PASS ? "✔ exists" : "❌ missing",
+    });
+
     const transporter = nodemailer.createTransport({
       host: process.env.MAIL_HOST,
       port: 587,
@@ -11,12 +19,13 @@ const mailSender = async (email, title, body) => {
         user: process.env.MAIL_USER,
         pass: process.env.MAIL_PASS,
       },
+      connectionTimeout: 10000, // 👈 VERY IMPORTANT
     });
 
-    transporter.verify((err, success) => {
-      if (err) console.log("SMTP VERIFY ERROR:", err);
-      else console.log("SMTP SERVER READY");
-    });
+    console.log("TRANSPORTER CREATED");
+
+    await transporter.verify();
+    console.log("SMTP VERIFIED");
 
     const info = await transporter.sendMail({
       from: `"StudyNotion" <practiceuse2002@gmail.com>`,
@@ -25,12 +34,12 @@ const mailSender = async (email, title, body) => {
       html: body,
     });
 
-    console.log("Email sent:", info.messageId);
+    console.log("EMAIL SENT:", info.messageId);
     return info;
 
   } catch (error) {
-    console.log("Email error:", error);
-    throw error; // 👈 REQUIRED
+    console.log("MAIL ERROR:", error);
+    throw error;
   }
 };
 
