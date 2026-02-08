@@ -30,7 +30,7 @@ exports.resetPasswordToken = async(req,res)=>{
                                             }, {new:true});
 
         //create url
-        const url = `https://studynotion1-gvt6.onrender.com/updatePassword/${token}`;
+        const url = `https://study-notion-dupl.vercel.app/updatePassword/${token}`;
 
         // send email containing the url
         try{
