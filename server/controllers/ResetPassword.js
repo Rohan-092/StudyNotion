@@ -30,7 +30,7 @@ exports.resetPasswordToken = async(req,res)=>{
                                             }, {new:true});
 
         //create url
-        const url = `https://studynotiondupl-1.onrender.com/updatePassword/${token}`;
+        const url = `http://localhost:3000/updatePassword/${token}`;
 
         // send email containing the url
         try{
