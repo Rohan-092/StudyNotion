@@ -13,6 +13,11 @@ const mailSender = async (email, title, body) => {
       },
     });
 
+    transporter.verify((err, success) => {
+      if (err) console.log("SMTP VERIFY ERROR:", err);
+      else console.log("SMTP SERVER READY");
+    });
+
     const info = await transporter.sendMail({
       from: `"StudyNotion" <practiceuse2002@gmail.com>`,
       to: email,
@@ -22,11 +27,10 @@ const mailSender = async (email, title, body) => {
 
     console.log("Email sent:", info.messageId);
     return info;
+
   } catch (error) {
-    catch (error) {
-  console.log("Email error:", error);
-  throw error;   
-}
+    console.log("Email error:", error);
+    throw error; // 👈 REQUIRED
   }
 };
 
