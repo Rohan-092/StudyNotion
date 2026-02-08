@@ -1,30 +1,25 @@
-const nodemailer = require("nodemailer");
+const mailgun = require("mailgun-js");
 require("dotenv").config();
 
-const mailSender = async (email, title, body) => {
+const mg = mailgun({
+  apiKey: process.env.MAILGUN_API_KEY,
+  domain: process.env.MAILGUN_DOMAIN,
+});
+
+const mailSender = async (email, subject, html) => {
+  const data = {
+    from: process.env.MAILGUN_FROM_EMAIL,
+    to: email,
+    subject: subject,
+    html: html,
+  };
+
   try {
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.MAIL_USER, // your gmail
-        pass: process.env.MAIL_PASS, // app password
-        port:465,
-        secure: true
-      },
-    });
-  
-    const info = await transporter.sendMail({
-      from: `"my app" <${process.env.MAIL_USER}>`,
-      to: email,
-      subject: title,
-      html: body,
-    });
-
-    console.log("EMAIL SENT:", info.messageId);
-    return info;
-
+    const body = await mg.messages().send(data);
+    console.log("EMAIL SENT:", body);
+    return body;
   } catch (error) {
-    console.log("MAIL ERROR:", error.message);
+    console.error("MAIL ERROR:", error.message);
     throw error;
   }
 };
