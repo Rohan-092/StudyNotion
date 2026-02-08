@@ -1,25 +1,20 @@
-const mailgun = require("mailgun-js");
-require("dotenv").config();
+const { Resend } = require("resend");
 
-const mg = mailgun({
-  apiKey: process.env.MAILGUN_API_KEY,
-  domain: process.env.MAILGUN_DOMAIN,
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-const mailSender = async (email, subject, html) => {
-  const data = {
-    from: process.env.MAILGUN_FROM_EMAIL,
-    to: email,
-    subject: subject,
-    html: html,
-  };
-
+const mailSender = async (email, title, body) => {
   try {
-    const body = await mg.messages().send(data);
-    console.log("EMAIL SENT:", body);
-    return body;
+    const response = await resend.emails.send({
+      from: process.env.RESEND_FROM_EMAIL,
+      to: email,
+      subject: title,
+      html: body,
+    });
+
+    console.log("EMAIL SENT:", response);
+    return response;
   } catch (error) {
-    console.error("MAIL ERROR:", error.message);
+    console.error("RESEND ERROR:", error);
     throw error;
   }
 };
