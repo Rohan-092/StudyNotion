@@ -5,21 +5,15 @@ const mailSender = async (email, title, body) => {
   console.log("MAIL FUNCTION STARTED");
 
   try {
-    console.log("MAIL CONFIG:", {
-      host: process.env.MAIL_HOST,
-      user: process.env.MAIL_USER ? "✔ exists" : "❌ missing",
-      pass: process.env.MAIL_PASS ? "✔ exists" : "❌ missing",
-    });
-
     const transporter = nodemailer.createTransport({
-      host: process.env.MAIL_HOST,
-      port: 587,
-      secure: false,
+      host: "smtp-relay.brevo.com",
+      port: 465,
+      secure: true,
       auth: {
         user: process.env.MAIL_USER,
         pass: process.env.MAIL_PASS,
       },
-      connectionTimeout: 10000, // 👈 VERY IMPORTANT
+      connectionTimeout: 20000,
     });
 
     console.log("TRANSPORTER CREATED");
