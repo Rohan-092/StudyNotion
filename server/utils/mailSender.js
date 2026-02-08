@@ -8,6 +8,8 @@ const mailSender = async (email, title, body) => {
       auth: {
         user: process.env.MAIL_USER, // your gmail
         pass: process.env.MAIL_PASS, // app password
+        port:465,
+        secure: true
       },
     });
   
