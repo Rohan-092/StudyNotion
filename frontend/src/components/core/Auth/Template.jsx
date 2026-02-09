@@ -27,7 +27,7 @@ function Template({ title, description1, description2, image, formType }) {
                             
                             {formType === "signup" ? <SignupForm /> : <LoginForm />}
 
-                            <div className="flex w-full items-center my-4 gap-x-2">
+                            {/* <div className="flex w-full items-center my-4 gap-x-2">
                                 <div className="w-full h-[1px] bg-richblack-700"></div>
                                 <p className="text-richblack-700 font-medium leading[1.375rem]">
                                     OR
@@ -42,7 +42,7 @@ function Template({ title, description1, description2, image, formType }) {
                                     Sign Up With Google 
                                 </a>
                             </button>
-                        </div>
+                        </div> */}
 
                         <div className="relative mx-auto w-11/12 max-w-[450px] md:mx-0">
                             <img 
