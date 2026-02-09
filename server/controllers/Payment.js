@@ -169,16 +169,26 @@ exports.sendPaymentSuccessEmail = async (req, res) => {
     try {
         const enrolledStudent = await User.findById(userId)
     
+        // await mailSender(
+        //     enrolledStudent.email,
+        //     `Payment Received`,
+        //     paymentSuccessEmail(
+        //     `${enrolledStudent.firstName} ${enrolledStudent.lastName}`,
+        //     amount / 100,
+        //     orderId,
+        //     paymentId
+        //     )
+        // )
+        console.log("before")
         await mailSender(
-            enrolledStudent.email,
-            `Payment Received`,
-            paymentSuccessEmail(
-            `${enrolledStudent.firstName} ${enrolledStudent.lastName}`,
-            amount / 100,
-            orderId,
-            paymentId
-            )
-        )
+//                 enrolledStudent.email,
+//                 `Successfully Enrolled into ${enrolledCourse.courseName}`,
+//                 courseEnrollment(
+//                     enrolledCourse.courseName,
+//                     `${enrolledStudent.firstName} ${enrolledStudent.lastName}`
+//                 )
+//             )
+            console.log("after")
     } catch (error) {
         console.log("error in sending mail", error)
         return res
