@@ -1,5 +1,5 @@
 
-# StudyNotion - EdTech Platform [Website Link](https://study-notion-pi-peach.vercel.app/)
+# StudyNotion - EdTech Platform [Website Link](https://study-notion-nine-alpha.vercel.app/)
 
 ![Main Page](images/mainpage.png)
 
