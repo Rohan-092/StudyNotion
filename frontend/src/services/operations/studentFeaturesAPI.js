@@ -1,5 +1,5 @@
 import { toast } from "react-hot-toast"
-require('dotenv').config();
+
 import rzpLogo from "../../assets/Logo/rzp_logo.png"
 import { resetCart } from "../../slices/cartSlice"
 import { setPaymentLoading } from "../../slices/courseSlice"
@@ -66,7 +66,7 @@ export async function buyCourse(
 
     // Opening the Razorpay SDK
     const options = {
-      key: process.env.RAZORPAY_KEY,
+      key: rzp_test_SCm3Vg3cbEpJtv,
       currency: orderResponse.data.data.currency,
       amount: `${orderResponse.data.data.amount}`,
       order_id: orderResponse.data.data.id,
