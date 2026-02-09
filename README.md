@@ -1,6 +1,5 @@
 
-# StudyNotion - EdTech Platform
-Not Deploy
+# StudyNotion - EdTech Platform [Website Link](https://study-notion-pi-peach.vercel.app/)
 
 StudyNotion is a fully functional EdTech platform that enables users to create, consume, and rate educational content. The platform is built using the MERN stack, which includes ReactJS, NodeJS, MongoDB, and ExpressJS.
 
