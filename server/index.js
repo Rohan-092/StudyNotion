@@ -23,7 +23,8 @@ app.use(cookieParser());
 app.use(
     cors({
         // origin: 'https://study-notion-dupl.vercel.app',
-        origin: 'http://localhost:3000',
+        // origin: 'http://localhost:3000',
+        origin: 'https://study-notion-pi-peach.vercel.app',
         credentials: true,
     })
 )
