@@ -78,7 +78,7 @@ const VerifyEmail = ()=>{
                                 </div>
                                 <button 
                                 className="text-sm text-richblue-300"
-                                onClick={() => dispatch(sendOtp(signupData.email))}>
+                                onClick={() => dispatch(sendOtp(signupData.email,navigate))}>
                                     Resend it
                                 </button>
                             </div>
