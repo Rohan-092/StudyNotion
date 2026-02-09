@@ -1,7 +1,10 @@
 
 # StudyNotion - EdTech Platform [Website Link](https://study-notion-pi-peach.vercel.app/)
 
-StudyNotion is a fully functional EdTech platform that enables users to create, consume, and rate educational content. The platform is built using the MERN stack, which includes ReactJS, NodeJS, MongoDB, and ExpressJS.
+![Main Page](images/mainpage.png)
+
+
+StudyNotion is a fully functional EdTech platform that enables users to create, consume, and rate educational content. The platform is built using the MERN stack, which includes ReactJS, NodeJS, MongoDB, and ExpressJS
 
 ## Table of Contents
 
@@ -12,10 +15,6 @@ StudyNotion is a fully functional EdTech platform that enables users to create, 
   - [Database](#database)
   - [Architecture Diagram](#architecture-diagram)
 - [API Design](#api-design)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-
 
 ## Introduction
 
@@ -100,6 +99,3 @@ Below is a high-level diagram that illustrates the architecture of the StudyNoti
 ## API Design
 
 The StudyNotion platform's API is designed following the REST architectural style. The API is implemented using Node.js and Express.js. It uses JSON for data exchange and follows standard HTTP request methods such as GET, POST, PUT, and DELETE.
-
-
-
