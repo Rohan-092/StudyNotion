@@ -30,7 +30,7 @@ exports.resetPasswordToken = async(req,res)=>{
                                             }, {new:true});
 
         //create url
-        const url = `https://study-notion-pi-peach.vercel.app/updatePassword/${token}`;
+        const url = `https://study-notion-nine-alpha.vercel.app/updatePassword/${token}`;
 
         // send email containing the url
         try{
