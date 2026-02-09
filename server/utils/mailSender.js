@@ -27,6 +27,7 @@ require('dotenv').config();
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const mailSender = async (to, subject, html) => {
+  console.log(" inside mail sender before",to)
   try {
     const msg = {
       to,
