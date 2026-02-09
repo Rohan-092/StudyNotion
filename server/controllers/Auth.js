@@ -48,11 +48,11 @@ console.log("5afterrmail")
         console.log(otpbody);
     console.log("beforemail")
        
-        await mailSender(
-      email,
-      "Verification Email from StudyNotion",
-      otpTemplate(otp)
-    );
+    //     await mailSender(
+    //   email,
+    //   "Verification Email from StudyNotion",
+    //   otpTemplate(otp)
+    // );
     console.log("afterrmail")
         return res.status(200).json({
             success:true,
