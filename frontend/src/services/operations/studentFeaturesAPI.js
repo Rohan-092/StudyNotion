@@ -94,10 +94,14 @@ export async function buyCourse(
     const paymentObject = new window.Razorpay(options)
 
     paymentObject.open()
-    paymentObject.on("Payment Failed.", function (response) {
-      toast.error("Oops! Payment Failed.")
-      console.log(response.error)
-    })
+    paymentObject.on("payment.failed", function (response) {
+  toast.error("Oops! Payment Failed.")
+  console.log(response.error)
+})
+    // paymentObject.on("Payment Failed.", function (response) {
+    //   toast.error("Oops! Payment Failed.")
+    //   console.log(response.error)
+    // })
   } catch (error) {
     console.log("PAYMENT API ERROR............", error)
     toast.error("Could Not make Payment.")
