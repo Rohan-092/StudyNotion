@@ -181,13 +181,15 @@ exports.sendPaymentSuccessEmail = async (req, res) => {
         // )
         console.log("before")
         await mailSender(
-                enrolledStudent.email,
-                `Successfully Enrolled into ${enrolledCourse.courseName}`,
-                courseEnrollment(
-                    enrolledCourse.courseName,
-                    `${enrolledStudent.firstName} ${enrolledStudent.lastName}`
-                )
+            enrolledStudent.email,
+            `Payment Received`,
+            paymentSuccessEmail(
+            `${enrolledStudent.firstName} ${enrolledStudent.lastName}`,
+            amount / 100,
+            orderId,
+            paymentId
             )
+        )
             console.log("after")
     } catch (error) {
         console.log("error in sending mail", error)
