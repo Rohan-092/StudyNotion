@@ -1,5 +1,5 @@
 import { toast } from "react-hot-toast"
-
+require('dotenv').config();
 import rzpLogo from "../../assets/Logo/rzp_logo.png"
 import { resetCart } from "../../slices/cartSlice"
 import { setPaymentLoading } from "../../slices/courseSlice"
@@ -66,7 +66,7 @@ export async function buyCourse(
 
     // Opening the Razorpay SDK
     const options = {
-      key: 'rzp_test_SCm3Vg3cbEpJtv',
+      key: process.env.RAZORPAY_KEY,
       currency: orderResponse.data.data.currency,
       amount: `${orderResponse.data.data.amount}`,
       order_id: orderResponse.data.data.id,
@@ -87,8 +87,26 @@ export async function buyCourse(
       //   }
       // },
       handler: function (response) {
-        sendPaymentSuccessEmail(response, orderResponse.data.data.amount, token)
-        verifyPayment({ ...response, courses }, token, navigate, dispatch)
+        // sendPaymentSuccessEmail(response, orderResponse.data.data.amount, token)
+        // verifyPayment({ ...response, courses }, token, navigate, dispatch)
+        verifyPayment(
+    {
+      razorpay_order_id: response.razorpay_order_id,
+      razorpay_payment_id: response.razorpay_payment_id,
+      razorpay_signature: response.razorpay_signature,
+      courses,
+    },
+    token,
+    navigate,
+    dispatch
+  )
+        setTimeout(() => {
+    sendPaymentSuccessEmail(
+      response,
+      orderResponse.data.data.amount,
+      token
+    )
+  }, 0)
       },
     }
     const paymentObject = new window.Razorpay(options)
